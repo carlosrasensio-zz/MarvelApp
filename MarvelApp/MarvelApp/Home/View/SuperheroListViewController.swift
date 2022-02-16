@@ -7,15 +7,24 @@
 
 import UIKit
 
-class SuperheroListViewController: UIViewController {
+protocol SuperheroListViewControllerProtocol {
+    func setTableView()
+    func getSuperheroes()
+}
+
+class SuperheroListViewController: UIViewController, SuperheroListViewControllerProtocol {
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
+    // MARK: - Variables
+    private var superheroes = [Superhero]()
+
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setTableView()
+        getSuperheroes()
     }
 
     // MARK: - Table view configuration
@@ -24,12 +33,27 @@ class SuperheroListViewController: UIViewController {
         self.tableView.dataSource = self
     }
 
-    // MARK: - Activity indicator configuraion
-    func setActivityIndicator() {
-
+    private func reloadTableView() {
+        DispatchQueue.main.async {
+            self.setActivityIndicator(false)
+            self.tableView.reloadData()
+        }
     }
 
+    // MARK: - Activity indicator configuraion
+    private func setActivityIndicator(_ show: Bool) {
+        self.activityIndicator.isHidden = !show
+        if show {
+            self.activityIndicator.startAnimating()
+        } else {
+            self.activityIndicator.stopAnimating()
+        }
+    }
 
+    // MARK: - Get data
+    func getSuperheroes() {
+        // TODO: call view model method
+    }
 }
 
 // MARK: - TableView functions
@@ -39,20 +63,11 @@ extension SuperheroListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CustomCells.movieCellId) as! MovieCustomCell
-        if searchController.isActive && searchController.searchBar.text != "" {
-            cell.titleLabel.text = filteredMovies[indexPath.row].title
-            cell.descriptionLabel.text = filteredMovies[indexPath.row].description
-            cell.voteAverageLabel.text = "Vote average: \(filteredMovies[indexPath.row].voteAverage)"
-            let imageUrl = Constants.NetworkManager.URLs.image + filteredMovies[indexPath.row].image
-            cell.movieImageView.getImageFromURL(urlString: imageUrl)
-        } else {
-            cell.titleLabel.text = movies[indexPath.row].title
-            cell.descriptionLabel.text = movies[indexPath.row].description
-            cell.voteAverageLabel.text = "Vote average: \(movies[indexPath.row].voteAverage)"
-            let imageUrl = Constants.NetworkManager.URLs.image + movies[indexPath.row].image
-            cell.movieImageView.getImageFromURL(urlString: imageUrl)
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CustomCells.superheroCellId) as! SuperheroCustomCell
+        let exampleSuperhero = Superhero(name: "Iron Man", description: "Avenger")
+        cell.titleLabel.text = exampleSuperhero.name
+        cell.descriptionLabel.text = exampleSuperhero.description
+        cell.superheroImageView.image = UIImage(named: Constants.appIcon)
 
         return cell
     }
@@ -64,10 +79,19 @@ extension SuperheroListViewController: UITableViewDataSource {
 
 extension SuperheroListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if searchController.isActive && searchController.searchBar.text != "" {
-            viewModel.createMovieDetailView(movie: filteredMovies[indexPath.row])
-        } else {
-            viewModel.createMovieDetailView(movie: movies[indexPath.row])
+    }
+}
+
+// MARK: - Alerts configuration
+private extension SuperheroListViewController {
+    func showAlert(title: String, message : String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = .red
+        alert.view.alpha = 0.5
+        alert.view.layer.cornerRadius = 15
+        self.present(alert, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+            alert.dismiss(animated: true)
         }
     }
 }
