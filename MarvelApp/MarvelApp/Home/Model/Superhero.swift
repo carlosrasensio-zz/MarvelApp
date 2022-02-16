@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct Superhero: Codable {
+    let name: String
+    let description: String
+}
