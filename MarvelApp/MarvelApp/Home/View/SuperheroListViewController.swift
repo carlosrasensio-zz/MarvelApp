@@ -31,6 +31,9 @@ class SuperheroListViewController: UIViewController, SuperheroListViewController
     func setTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(UINib(nibName: Constants.CustomCells.superheroCellId, bundle: nil), forCellReuseIdentifier: Constants.CustomCells.superheroCellId)
+        tableView.separatorColor = .red
     }
 
     private func reloadTableView() {
