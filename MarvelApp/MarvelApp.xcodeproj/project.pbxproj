@@ -25,6 +25,8 @@
 		9E70FF3927BD36BE00789EEA /* SuperHeroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70FF3727BD36BE00789EEA /* SuperHeroDetailViewController.swift */; };
 		9E70FF3A27BD36BE00789EEA /* SuperHeroDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E70FF3827BD36BE00789EEA /* SuperHeroDetailViewController.xib */; };
 		9E70FF3C27BD36CE00789EEA /* SuperheroDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70FF3B27BD36CE00789EEA /* SuperheroDetailViewModel.swift */; };
+		9E70FF4127BD397100789EEA /* SuperheroListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70FF4027BD397100789EEA /* SuperheroListRouter.swift */; };
+		9E70FF4427BD398E00789EEA /* SuperheroDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70FF4327BD398E00789EEA /* SuperheroDetailRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		9E70FF3727BD36BE00789EEA /* SuperHeroDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperHeroDetailViewController.swift; sourceTree = "<group>"; };
 		9E70FF3827BD36BE00789EEA /* SuperHeroDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuperHeroDetailViewController.xib; sourceTree = "<group>"; };
 		9E70FF3B27BD36CE00789EEA /* SuperheroDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroDetailViewModel.swift; sourceTree = "<group>"; };
+		9E70FF4027BD397100789EEA /* SuperheroListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroListRouter.swift; sourceTree = "<group>"; };
+		9E70FF4327BD398E00789EEA /* SuperheroDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroDetailRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +181,7 @@
 				9E70FF2727BD2B6E00789EEA /* Model */,
 				9E70FF2627BD2B6600789EEA /* View */,
 				9E70FF2527BD2B5200789EEA /* ViewModel */,
+				9E70FF3D27BD394000789EEA /* Router */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 			children = (
 				9E70FF3527BD369000789EEA /* View */,
 				9E70FF3427BD368A00789EEA /* ViewModel */,
+				9E70FF4227BD397B00789EEA /* Router */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -240,6 +246,22 @@
 				9E70FF3827BD36BE00789EEA /* SuperHeroDetailViewController.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		9E70FF3D27BD394000789EEA /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9E70FF4027BD397100789EEA /* SuperheroListRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9E70FF4227BD397B00789EEA /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9E70FF4327BD398E00789EEA /* SuperheroDetailRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,9 +403,11 @@
 				9E70FF3C27BD36CE00789EEA /* SuperheroDetailViewModel.swift in Sources */,
 				9E70FEE727BD29E900789EEA /* AppDelegate.swift in Sources */,
 				9E70FF2D27BD2BD500789EEA /* NetworkManager.swift in Sources */,
+				9E70FF4427BD398E00789EEA /* SuperheroDetailRouter.swift in Sources */,
 				9E70FEF127BD29E900789EEA /* MarvelApp.xcdatamodeld in Sources */,
 				9E70FF2127BD2B4000789EEA /* SuperheroListViewController.swift in Sources */,
 				9E70FEE927BD29E900789EEA /* SceneDelegate.swift in Sources */,
+				9E70FF4127BD397100789EEA /* SuperheroListRouter.swift in Sources */,
 				9E70FF3227BD2C0C00789EEA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
