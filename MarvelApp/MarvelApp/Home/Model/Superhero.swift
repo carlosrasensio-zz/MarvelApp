@@ -12,13 +12,19 @@ struct Superhero: Codable, Equatable {
     let description: String
     let thumbnail: Thumbnail
 
-    struct Thumbnail {
-        let path: String
-        let imageExtension: String
+    static func == (lhs: Superhero, rhs: Superhero) -> Bool {
+        return lhs.name == rhs.name &&
+            lhs.description == rhs.description &&
+            lhs.thumbnail == rhs.thumbnail
+    }
+}
 
-        enum CodingKeys: String, CodingKey {
-            case path
-            case imageExtension = "extension"
-        }
+struct Thumbnail: Codable, Equatable {
+    let path: String
+    let imageExtension: String
+
+    enum CodingKeys: String, CodingKey {
+        case path
+        case imageExtension = "extension"
     }
 }
