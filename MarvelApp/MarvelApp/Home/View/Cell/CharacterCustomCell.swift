@@ -11,10 +11,16 @@ class CharacterCustomCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet weak var characterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        setCustomCell()
+    }
+
+    func setCustomCell() {
+        self.titleLabel.backgroundColor = .red
+        self.titleLabel.alpha = 0.5
+        self.titleLabel.textColor = .white
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
