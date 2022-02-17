@@ -27,7 +27,7 @@ struct Constants {
             static let type = "\(NetworkManager.type)/"
             static let timeStamp = "?ts=\(NetworkManager.timeStamp)"
             static let hash = "&hash="
-            static let apiKey = "?api_key=\(Constants.NetworkManager.publicApiKey)"
+            static let apiKey = "&api_key=\(Constants.NetworkManager.publicApiKey)"
             static let characters = "characters"
         }
 
