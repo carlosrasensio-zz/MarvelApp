@@ -7,6 +7,14 @@
 
 import Foundation
 
+struct Response: Codable, Equatable {
+    let data: Data
+}
+
+struct Data: Codable, Equatable {
+    let results: [Superhero]
+}
+
 struct Superhero: Codable, Equatable {
     let name: String
     let description: String
