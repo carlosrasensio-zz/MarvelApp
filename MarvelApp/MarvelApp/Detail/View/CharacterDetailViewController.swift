@@ -1,5 +1,5 @@
 //
-//  SuperHeroDetailViewController.swift
+//  CharacterDetailViewController.swift
 //  MarvelApp
 //
 //  Created by crodrigueza on 16/2/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SuperHeroDetailViewController: UIViewController {
+class CharacterDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

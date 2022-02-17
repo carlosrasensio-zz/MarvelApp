@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         // MARK: - App main view configuration
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = SuperheroListRouter().viewController
+        let viewController = CharacterListRouter().viewController
         let navigationController = UINavigationController(rootViewController: viewController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

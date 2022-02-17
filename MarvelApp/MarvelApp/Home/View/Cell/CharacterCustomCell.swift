@@ -1,5 +1,5 @@
 //
-//  SuperheroCustomCell.swift
+//  CharacterCustomCell.swift
 //  MarvelApp
 //
 //  Created by crodrigueza on 16/2/22.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class SuperheroCustomCell: UITableViewCell {
+class CharacterCustomCell: UITableViewCell {
     // MARK: - Outlets
-    @IBOutlet weak var superheroImageView: UIImageView!
+    @IBOutlet weak var characterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
 

@@ -1,5 +1,5 @@
 //
-//  SuperheroListViewController.swift
+//  CharacterListViewController.swift
 //  MarvelApp
 //
 //  Created by crodrigueza on 16/2/22.
@@ -9,20 +9,20 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol SuperheroListViewControllerProtocol {
+protocol CharacterListViewControllerProtocol {
     func setTableView()
-    func getSuperheroes()
+    func getCharacters()
 }
 
-class SuperheroListViewController: UIViewController, SuperheroListViewControllerProtocol {
+class CharacterListViewController: UIViewController, CharacterListViewControllerProtocol {
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     // MARK: - Variables
-    private var router = SuperheroListRouter()
-    private var viewModel = SuperheroListViewModel()
-    private var superheroes = [Superhero]()
+    private var router = CharacterListRouter()
+    private var viewModel = CharacterListViewModel()
+    private var characters = [Character]()
     private var disposeBag = DisposeBag()
 
     // MARK: - Life cycle
@@ -30,7 +30,7 @@ class SuperheroListViewController: UIViewController, SuperheroListViewController
         super.viewDidLoad()
         configureNavigationController()
         setTableView()
-        getSuperheroes()
+        getCharacters()
     }
 
     // MARK: - NavigationItem configuration
@@ -43,7 +43,7 @@ class SuperheroListViewController: UIViewController, SuperheroListViewController
         self.tableView.delegate = self
         self.tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(UINib(nibName: Constants.CustomCells.superheroCellId, bundle: nil), forCellReuseIdentifier: Constants.CustomCells.superheroCellId)
+        tableView.register(UINib(nibName: Constants.CustomCells.characterCellId, bundle: nil), forCellReuseIdentifier: Constants.CustomCells.characterCellId)
         tableView.separatorColor = .red
     }
 
@@ -66,14 +66,14 @@ class SuperheroListViewController: UIViewController, SuperheroListViewController
 }
 
 // MARK: - Get data from ViewModel with RxSwift
-extension SuperheroListViewController {
-    func getSuperheroes() {
+extension CharacterListViewController {
+    func getCharacters() {
         setActivityIndicator(true)
-        return viewModel.getSuperheroes()
+        return viewModel.getCharacters()
             .subscribe(on: MainScheduler.instance)
             .observe(on: MainScheduler.instance)
-            .subscribe { superheroes in
-                self.superheroes = superheroes
+            .subscribe { characters in
+                self.characters = characters
                 self.reloadTableView()
             } onError: { error in
                 print("\n[X] Error: \(error.localizedDescription)\n")
@@ -84,18 +84,17 @@ extension SuperheroListViewController {
 }
 
 // MARK: - TableView functions
-extension SuperheroListViewController: UITableViewDataSource {
+extension CharacterListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return superheroes.count
+        return characters.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CustomCells.superheroCellId) as! SuperheroCustomCell
-        cell.titleLabel.text = superheroes[indexPath.row].name
-        cell.descriptionLabel.text = superheroes[indexPath.row].description
-        let imagePath = superheroes[indexPath.row].thumbnail.path
-        let imageExtension = superheroes[indexPath.row].thumbnail.imageExtension
-        cell.superheroImageView.getImageFromURL(imagePath, .portrait_xlarge, imageExtension)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CustomCells.characterCellId) as! CharacterCustomCell
+        cell.titleLabel.text = characters[indexPath.row].name
+        let imagePath = characters[indexPath.row].thumbnail.path
+        let imageExtension = characters[indexPath.row].thumbnail.imageExtension
+        cell.characterImageView.getImageFromURL(imagePath, .landscape_xlarge, imageExtension)
 
         return cell
     }
@@ -105,13 +104,13 @@ extension SuperheroListViewController: UITableViewDataSource {
     }
 }
 
-extension SuperheroListViewController: UITableViewDelegate {
+extension CharacterListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
 
 // MARK: - Alerts configuration
-private extension SuperheroListViewController {
+private extension CharacterListViewController {
     func showAlert(title: String, message : String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.view.backgroundColor = .red
