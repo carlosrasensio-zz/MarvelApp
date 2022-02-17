@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol SuperheroListViewControllerProtocol {
     func setTableView()
@@ -18,7 +20,10 @@ class SuperheroListViewController: UIViewController, SuperheroListViewController
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     // MARK: - Variables
+    private var router = SuperheroListRouter()
+    private var viewModel = SuperheroListViewModel()
     private var superheroes = [Superhero]()
+    private var disposeBag = DisposeBag()
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -45,32 +50,46 @@ class SuperheroListViewController: UIViewController, SuperheroListViewController
 
     // MARK: - Activity indicator configuraion
     private func setActivityIndicator(_ show: Bool) {
-        self.activityIndicator.isHidden = !show
         if show {
             self.activityIndicator.startAnimating()
         } else {
             self.activityIndicator.stopAnimating()
         }
+        self.activityIndicator.isHidden = !show
     }
+}
 
-    // MARK: - Get data
+// MARK: - Get data from ViewModel with RxSwift
+extension SuperheroListViewController {
     func getSuperheroes() {
-        // TODO: call view model method
+        setActivityIndicator(true)
+        return viewModel.getSuperheroes()
+            .subscribe(on: MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
+            .subscribe { superheroes in
+                self.superheroes = superheroes
+                self.reloadTableView()
+            } onError: { error in
+                print("\n[X] Error: \(error.localizedDescription)\n")
+                self.showAlert(title: "ERROR", message: error.localizedDescription)
+            } onCompleted: {}
+            .disposed(by: disposeBag)
     }
 }
 
 // MARK: - TableView functions
 extension SuperheroListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return superheroes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CustomCells.superheroCellId) as! SuperheroCustomCell
-        let exampleSuperhero = Superhero(name: "Iron Man", description: "Avenger")
-        cell.titleLabel.text = exampleSuperhero.name
-        cell.descriptionLabel.text = exampleSuperhero.description
-        cell.superheroImageView.image = UIImage(named: Constants.appIcon)
+        cell.titleLabel.text = superheroes[indexPath.row].name
+        cell.descriptionLabel.text = superheroes[indexPath.row].description
+        let imagePath = superheroes[indexPath.row].thumbnail.path
+        let imageExtension = superheroes[indexPath.row].thumbnail.imageExtension
+        cell.superheroImageView.getImageFromURL(imagePath, .portrait_xlarge, imageExtension)
 
         return cell
     }
