@@ -28,8 +28,14 @@ class SuperheroListViewController: UIViewController, SuperheroListViewController
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationController()
         setTableView()
         getSuperheroes()
+    }
+
+    // MARK: - NavigationItem configuration
+    private func configureNavigationController() {
+        navigationController?.configureStyle(self)
     }
 
     // MARK: - Table view configuration
