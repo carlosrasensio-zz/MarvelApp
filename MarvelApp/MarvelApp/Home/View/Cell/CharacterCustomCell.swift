@@ -18,8 +18,10 @@ class CharacterCustomCell: UITableViewCell {
     }
 
     func setCustomCell() {
+        self.titleLabel.layer.cornerRadius = self.titleLabel.frame.size.height/2.0
+        self.titleLabel.layer.masksToBounds = true
         self.titleLabel.backgroundColor = .red
-        self.titleLabel.alpha = 0.5
+        self.titleLabel.alpha = 0.8
         self.titleLabel.textColor = .white
     }
 

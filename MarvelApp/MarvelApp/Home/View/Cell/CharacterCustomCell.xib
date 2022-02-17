@@ -20,23 +20,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Em9-Np-0rz">
-                        <rect key="frame" x="16" y="249" width="268" height="40"/>
+                        <rect key="frame" x="16" y="2" width="268" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="TN7-5k-WAe"/>
+                            <constraint firstAttribute="height" constant="20" id="gqz-Hb-NVI"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="EOk-wd-bq1" secondAttribute="trailing" id="GGy-Gb-tQA"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Em9-Np-0rz" secondAttribute="bottom" id="PlK-8Y-ZYW"/>
+                    <constraint firstItem="Em9-Np-0rz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="HT7-Ww-Nw2"/>
                     <constraint firstAttribute="bottom" secondItem="EOk-wd-bq1" secondAttribute="bottom" id="aNk-Ok-3tR"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Em9-Np-0rz" secondAttribute="trailing" id="bft-tR-oX6"/>
                     <constraint firstItem="EOk-wd-bq1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fzl-8B-Nk5"/>
                     <constraint firstItem="EOk-wd-bq1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lhs-wn-mIk"/>
-                    <constraint firstItem="Em9-Np-0rz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="v63-NA-1Ii"/>
+                    <constraint firstAttribute="trailing" secondItem="Em9-Np-0rz" secondAttribute="trailing" constant="16" id="mvt-2h-WHJ"/>
+                    <constraint firstItem="Em9-Np-0rz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="rBe-pu-Khk"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
