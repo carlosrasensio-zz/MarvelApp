@@ -44,7 +44,6 @@ class CharacterListViewController: UIViewController, CharacterListViewController
         self.tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: Constants.CustomCells.characterCellId, bundle: nil), forCellReuseIdentifier: Constants.CustomCells.characterCellId)
-        tableView.separatorColor = .red
     }
 
     private func reloadTableView() {
@@ -94,7 +93,7 @@ extension CharacterListViewController: UITableViewDataSource {
         cell.titleLabel.text = characters[indexPath.row].name
         let imagePath = characters[indexPath.row].thumbnail.path
         let imageExtension = characters[indexPath.row].thumbnail.imageExtension
-        cell.characterImageView.getImageFromURL(imagePath, .landscape_xlarge, imageExtension)
+        cell.characterImageView.getImageFromURL(imagePath, .landscape_fantastic, imageExtension)
 
         return cell
     }

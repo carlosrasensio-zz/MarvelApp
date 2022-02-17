@@ -41,11 +41,17 @@ struct Constants {
                 case portrait_fantastic
                 case portrait_ucanny
                 case portrait_incredible
+                case landscape_small
+                case landscape_medium
+                case landscape_xlarge
+                case landscape_fantastic
+                case landscape_ucanny
+                case landscape_incredible
             }
         }
     }
 
     struct CustomCells {
-        static let superheroCellId = "SuperheroCustomCell"
+        static let characterCellId = "CharacterCustomCell"
     }
 }
