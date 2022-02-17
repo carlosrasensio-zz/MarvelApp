@@ -30,6 +30,7 @@
 		9E70FF4727BD4A5200789EEA /* String+CommonCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70FF4627BD4A5200789EEA /* String+CommonCrypto.swift */; };
 		9E70FF4B27BDB27600789EEA /* SuperheroCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70FF4927BDB27600789EEA /* SuperheroCustomCell.swift */; };
 		9E70FF4C27BDB27600789EEA /* SuperheroCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E70FF4A27BDB27600789EEA /* SuperheroCustomCell.xib */; };
+		9E70FF4E27BDD30900789EEA /* UIImageView+URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70FF4D27BDD30900789EEA /* UIImageView+URLSession.swift */; };
 		9E9688D1A25F8014D4D54DC6 /* Pods_MarvelAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82359FED6ED8F95392A3AB2 /* Pods_MarvelAppTests.framework */; };
 		DD858D72E2234FB29975DF5B /* Pods_MarvelApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCAD335D5909832C26C82BFE /* Pods_MarvelApp.framework */; };
 		E41663753943EE3182C627D7 /* Pods_MarvelApp_MarvelAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC215395B07C9E67C9781E37 /* Pods_MarvelApp_MarvelAppUITests.framework */; };
@@ -84,6 +85,7 @@
 		9E70FF4627BD4A5200789EEA /* String+CommonCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CommonCrypto.swift"; sourceTree = "<group>"; };
 		9E70FF4927BDB27600789EEA /* SuperheroCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroCustomCell.swift; sourceTree = "<group>"; };
 		9E70FF4A27BDB27600789EEA /* SuperheroCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuperheroCustomCell.xib; sourceTree = "<group>"; };
+		9E70FF4D27BDD30900789EEA /* UIImageView+URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+URLSession.swift"; sourceTree = "<group>"; };
 		A4A895C6C1E97524E20E7246 /* Pods-MarvelAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MarvelAppTests/Pods-MarvelAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A821629651F21C2D2016D298 /* Pods-MarvelApp-MarvelAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp-MarvelAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MarvelApp-MarvelAppUITests/Pods-MarvelApp-MarvelAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B82359FED6ED8F95392A3AB2 /* Pods_MarvelAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				9E70FF4627BD4A5200789EEA /* String+CommonCrypto.swift */,
+				9E70FF4D27BDD30900789EEA /* UIImageView+URLSession.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				9E70FF4727BD4A5200789EEA /* String+CommonCrypto.swift in Sources */,
 				9E70FF3027BD2BE400789EEA /* DataManager.swift in Sources */,
 				9E70FF4B27BDB27600789EEA /* SuperheroCustomCell.swift in Sources */,
+				9E70FF4E27BDD30900789EEA /* UIImageView+URLSession.swift in Sources */,
 				9E70FF2427BD2B4B00789EEA /* Superhero.swift in Sources */,
 				9E70FF3C27BD36CE00789EEA /* SuperheroDetailViewModel.swift in Sources */,
 				9E70FEE727BD29E900789EEA /* AppDelegate.swift in Sources */,

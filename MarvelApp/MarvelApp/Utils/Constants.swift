@@ -30,6 +30,19 @@ struct Constants {
             static let apiKey = "?api_key=\(Constants.NetworkManager.publicApiKey)"
             static let characters = "characters"
         }
+
+        struct Image {
+            let variant: Variant
+            
+            enum Variant: String {
+                case portrait_small
+                case portrait_medium
+                case portrait_xlarge
+                case portrait_fantastic
+                case portrait_ucanny
+                case portrait_incredible
+            }
+        }
     }
 
     struct CustomCells {
