@@ -129,7 +129,6 @@
 				A4A895C6C1E97524E20E7246 /* Pods-MarvelAppTests.debug.xcconfig */,
 				64E7C6C72D3AB5778D8CF5C2 /* Pods-MarvelAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -235,10 +234,10 @@
 		9E70FF2A27BD2BB700789EEA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9E70FF3127BD2C0C00789EEA /* Constants.swift */,
 				9E70FF4527BD4A3B00789EEA /* Extensions */,
 				9E70FF2E27BD2BD900789EEA /* Data */,
 				9E70FF2B27BD2BC100789EEA /* Network */,
-				9E70FF3127BD2C0C00789EEA /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
