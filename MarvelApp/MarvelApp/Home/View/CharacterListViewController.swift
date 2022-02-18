@@ -43,8 +43,6 @@ class CharacterListViewController: UIViewController, CharacterListViewController
     private func configureNavigationItem() {
         navigationController?.navigationBar.barTintColor = UIColor.red
         self.navigationItem.title = Constants.appName
-        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
 
     // MARK: - SearchBarController configuration
