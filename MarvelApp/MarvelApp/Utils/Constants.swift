@@ -8,7 +8,7 @@
 import Foundation
 
 struct Constants {
-    static let appName = "Marvel App"
+    static let appName = "MARVEL App"
     static let appIcon = "icnMarvel"
 
     struct NetworkManager {
@@ -43,9 +43,9 @@ struct Constants {
                 case portrait_incredible
                 case landscape_small
                 case landscape_medium
+                case landscape_large
                 case landscape_xlarge
-                case landscape_fantastic
-                case landscape_ucanny
+                case landscape_amazing
                 case landscape_incredible
             }
         }
