@@ -23,19 +23,63 @@ class CharacterListViewController: UIViewController, CharacterListViewController
     private var router = CharacterListRouter()
     private var viewModel = CharacterListViewModel()
     private var characters = [Character]()
+    private var filteredCharacters = [Character]()
     private var disposeBag = DisposeBag()
+
+    lazy var searchController: UISearchController = ({
+        createSearchBarController()
+    })()
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationController()
+        configureNavigationItem()
+        configureSearchBarController()
         setTableView()
         getCharacters()
     }
 
     // MARK: - NavigationItem configuration
-    private func configureNavigationController() {
-        navigationController?.configureStyle(self)
+    private func configureNavigationItem() {
+        navigationController?.navigationBar.barTintColor = UIColor.red
+        self.navigationItem.title = Constants.appName
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+    }
+
+    // MARK: - SearchBarController configuration
+    private func createSearchBarController() -> UISearchController {
+        let controller = UISearchController(searchResultsController: nil)
+        controller.hidesNavigationBarDuringPresentation = true
+        controller.obscuresBackgroundDuringPresentation = false
+        controller.searchBar.sizeToFit()
+        controller.searchBar.barStyle = .default
+        controller.searchBar.backgroundColor = .red
+        controller.searchBar.placeholder = "Search your MARVEL character!"
+        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+         UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes, for: .normal)
+
+        return controller
+    }
+
+    private func configureSearchBarController() {
+        let searchBar = searchController.searchBar
+        searchController.delegate = self
+        tableView.tableHeaderView = searchBar
+        tableView.contentOffset = CGPoint(x: 0, y: searchBar.frame.size.height)
+        searchBar.rx.text
+            .orEmpty
+            .distinctUntilChanged()
+            .subscribe { result in
+                self.filteredCharacters = self.characters.filter({ character in
+                    self.reloadTableView()
+                    return character.name.contains(result)
+                })
+            } onError: { error in
+                print("\n[X] Error: \(error.localizedDescription)\n")
+                self.showAlert(title: "ERROR", message: error.localizedDescription)
+            }
+            .disposed(by: disposeBag)
     }
 
     // MARK: - Table view configuration
@@ -85,15 +129,26 @@ extension CharacterListViewController {
 // MARK: - TableView functions
 extension CharacterListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characters.count
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredCharacters.count
+        } else {
+            return characters.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CustomCells.characterCellId) as! CharacterCustomCell
-        cell.titleLabel.text = characters[indexPath.row].name
-        let imagePath = characters[indexPath.row].thumbnail.path
-        let imageExtension = characters[indexPath.row].thumbnail.imageExtension
-        cell.characterImageView.getImageFromURL(imagePath, .landscape_fantastic, imageExtension)
+        if searchController.isActive && searchController.searchBar.text != "" {
+            cell.titleLabel.text = filteredCharacters[indexPath.row].name
+            let imagePath = filteredCharacters[indexPath.row].thumbnail.path
+            let imageExtension = filteredCharacters[indexPath.row].thumbnail.imageExtension
+            cell.characterImageView.getImageFromURL(imagePath, .landscape_amazing, imageExtension)
+        } else {
+            cell.titleLabel.text = characters[indexPath.row].name
+            let imagePath = characters[indexPath.row].thumbnail.path
+            let imageExtension = characters[indexPath.row].thumbnail.imageExtension
+            cell.characterImageView.getImageFromURL(imagePath, .landscape_amazing, imageExtension)
+        }
 
         return cell
     }
@@ -105,6 +160,17 @@ extension CharacterListViewController: UITableViewDataSource {
 
 extension CharacterListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if searchController.isActive && searchController.searchBar.text != "" {
+        } else {
+        }
+    }
+}
+
+// MARK: - SearchController functions
+extension CharacterListViewController: UISearchControllerDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchController.isActive = false
+        reloadTableView()
     }
 }
 
