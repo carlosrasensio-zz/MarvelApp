@@ -10,14 +10,14 @@ import RxSwift
 import RxCocoa
 
 protocol CharacterListViewControllerProtocol {
-    func setTableView()
+    func configureTableView()
     func getCharacters()
 }
 
 class CharacterListViewController: UIViewController, CharacterListViewControllerProtocol {
     // MARK: - Outlets
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
 
     // MARK: - Variables
     private var router = CharacterListRouter()
@@ -35,7 +35,8 @@ class CharacterListViewController: UIViewController, CharacterListViewController
         super.viewDidLoad()
         configureNavigationItem()
         configureSearchBarController()
-        setTableView()
+        configureTableView()
+        viewModel.bind(view: self, router: router)
         getCharacters()
     }
 
@@ -43,6 +44,8 @@ class CharacterListViewController: UIViewController, CharacterListViewController
     private func configureNavigationItem() {
         navigationController?.navigationBar.barTintColor = UIColor.red
         self.navigationItem.title = Constants.appName
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Favs", style: .plain, target: self, action: #selector(showFavorites))
+        navigationItem.rightBarButtonItem?.tintColor = .black
     }
 
     // MARK: - SearchBarController configuration
@@ -81,7 +84,7 @@ class CharacterListViewController: UIViewController, CharacterListViewController
     }
 
     // MARK: - Table view configuration
-    func setTableView() {
+    func configureTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
@@ -159,7 +162,9 @@ extension CharacterListViewController: UITableViewDataSource {
 extension CharacterListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchController.isActive && searchController.searchBar.text != "" {
+            viewModel.createCharacterDetailView(filteredCharacters[indexPath.row])
         } else {
+            viewModel.createCharacterDetailView(characters[indexPath.row])
         }
     }
 }
@@ -169,6 +174,13 @@ extension CharacterListViewController: UISearchControllerDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchController.isActive = false
         reloadTableView()
+    }
+}
+
+// MARK: - Navigation bar action
+private extension CharacterListViewController {
+    @objc func showFavorites() {
+        viewModel.createFavoritesView()
     }
 }
 

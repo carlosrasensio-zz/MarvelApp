@@ -25,11 +25,12 @@ class CharacterCustomCell: UITableViewCell {
         self.titleLabel.backgroundColor = .red
         self.titleLabel.alpha = 0.8
         self.titleLabel.textColor = .black
-        self.characterImageView.layer.cornerRadius = 50
+        self.characterImageView.layer.cornerRadius = 10
         self.characterImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        contentView.backgroundColor = UIColor.black
     }
 }
