@@ -8,5 +8,11 @@
 import Foundation
 
 struct CharacterDataContainer: Codable, Equatable {
+    let total: Int
+    let count: Int
     let results: [Character]
+
+    static func == (lhs: CharacterDataContainer, rhs: CharacterDataContainer) -> Bool {
+        return lhs.results == rhs.results
+    }
 }

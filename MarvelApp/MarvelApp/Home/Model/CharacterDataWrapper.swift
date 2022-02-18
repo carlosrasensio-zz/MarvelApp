@@ -9,4 +9,8 @@ import Foundation
 
 struct CharacterDataWrapper: Codable, Equatable {
     let data: CharacterDataContainer
+
+    static func == (lhs: CharacterDataWrapper, rhs: CharacterDataWrapper) -> Bool {
+        return lhs.data == rhs.data
+    }
 }
