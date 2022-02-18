@@ -17,12 +17,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EOk-wd-bq1">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <rect key="frame" x="8" y="12" width="284" height="276"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Em9-Np-0rz">
-                        <rect key="frame" x="16" y="2" width="268" height="20"/>
+                        <rect key="frame" x="60" y="16" width="180" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="gqz-Hb-NVI"/>
+                            <constraint firstAttribute="height" constant="20" id="vPP-lG-NxJ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                         <nil key="textColor"/>
@@ -30,13 +30,13 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="EOk-wd-bq1" secondAttribute="trailing" id="GGy-Gb-tQA"/>
-                    <constraint firstItem="Em9-Np-0rz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="HT7-Ww-Nw2"/>
-                    <constraint firstAttribute="bottom" secondItem="EOk-wd-bq1" secondAttribute="bottom" id="aNk-Ok-3tR"/>
-                    <constraint firstItem="EOk-wd-bq1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fzl-8B-Nk5"/>
-                    <constraint firstItem="EOk-wd-bq1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lhs-wn-mIk"/>
-                    <constraint firstAttribute="trailing" secondItem="Em9-Np-0rz" secondAttribute="trailing" constant="16" id="mvt-2h-WHJ"/>
-                    <constraint firstItem="Em9-Np-0rz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="rBe-pu-Khk"/>
+                    <constraint firstItem="EOk-wd-bq1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="4Kx-vj-g6k"/>
+                    <constraint firstAttribute="trailing" secondItem="Em9-Np-0rz" secondAttribute="trailing" constant="60" id="8VF-d0-VZF"/>
+                    <constraint firstItem="Em9-Np-0rz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="60" id="GhJ-Un-YwI"/>
+                    <constraint firstAttribute="trailing" secondItem="EOk-wd-bq1" secondAttribute="trailing" constant="8" id="ddW-65-nkw"/>
+                    <constraint firstItem="Em9-Np-0rz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="ioF-ZQ-Pkb"/>
+                    <constraint firstAttribute="bottom" secondItem="EOk-wd-bq1" secondAttribute="bottom" constant="12" id="mGx-uN-2c6"/>
+                    <constraint firstItem="EOk-wd-bq1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="trf-JY-Lgo"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

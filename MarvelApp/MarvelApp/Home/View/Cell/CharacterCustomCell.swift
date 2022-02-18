@@ -17,12 +17,16 @@ class CharacterCustomCell: UITableViewCell {
         setCustomCell()
     }
 
+    // MARK: - Custom cell configuration
     func setCustomCell() {
+        self.backgroundColor = .black
         self.titleLabel.layer.cornerRadius = self.titleLabel.frame.size.height/2.0
         self.titleLabel.layer.masksToBounds = true
         self.titleLabel.backgroundColor = .red
         self.titleLabel.alpha = 0.8
-        self.titleLabel.textColor = .white
+        self.titleLabel.textColor = .black
+        self.characterImageView.layer.cornerRadius = 50
+        self.characterImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
