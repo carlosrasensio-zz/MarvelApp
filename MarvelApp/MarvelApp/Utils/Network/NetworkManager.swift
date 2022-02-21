@@ -26,6 +26,7 @@ class NetworkManager: NetworkManagerProtocol {
                         let response = try decoder.decode(CharacterDataWrapper.self, from: data)
                         observer.onNext(response.data.results)
                     } catch let error {
+                        observer.onError(error)
                         print("\n[X] Error: \(error.localizedDescription)\n")
                     }
                 } else {
