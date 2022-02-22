@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E004DCB27C4573C008693E5 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E004DC927C4573C008693E5 /* FavoritesViewController.swift */; };
+		9E004DCC27C4573C008693E5 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E004DCA27C4573C008693E5 /* FavoritesViewController.xib */; };
+		9E004DCE27C45747008693E5 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E004DCD27C45747008693E5 /* FavoritesViewModel.swift */; };
+		9E004DD027C45752008693E5 /* FavoritesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E004DCF27C45752008693E5 /* FavoritesRouter.swift */; };
 		9E630BCB27BF396000D42D86 /* CharacterUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E630BCA27BF396000D42D86 /* CharacterUnitTests.swift */; };
 		9E630BCE27BF39AE00D42D86 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E630BCD27BF39AE00D42D86 /* Data+Extensions.swift */; };
 		9E630BD027BF39C800D42D86 /* DecodableTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E630BCF27BF39C800D42D86 /* DecodableTestFile.swift */; };
@@ -65,6 +69,10 @@
 		48778BEDE26872A9CC1B76A6 /* Pods-MarvelApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp.debug.xcconfig"; path = "Target Support Files/Pods-MarvelApp/Pods-MarvelApp.debug.xcconfig"; sourceTree = "<group>"; };
 		64E7C6C72D3AB5778D8CF5C2 /* Pods-MarvelAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelAppTests.release.xcconfig"; path = "Target Support Files/Pods-MarvelAppTests/Pods-MarvelAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		845701402C38F57FD7336A92 /* Pods-MarvelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp.release.xcconfig"; path = "Target Support Files/Pods-MarvelApp/Pods-MarvelApp.release.xcconfig"; sourceTree = "<group>"; };
+		9E004DC927C4573C008693E5 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		9E004DCA27C4573C008693E5 /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
+		9E004DCD27C45747008693E5 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		9E004DCF27C45752008693E5 /* FavoritesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRouter.swift; sourceTree = "<group>"; };
 		9E630BCA27BF396000D42D86 /* CharacterUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUnitTests.swift; sourceTree = "<group>"; };
 		9E630BCD27BF39AE00D42D86 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		9E630BCF27BF39C800D42D86 /* DecodableTestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableTestFile.swift; sourceTree = "<group>"; };
@@ -148,6 +156,41 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		9E004DC427C456A3008693E5 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				9E004DC727C45711008693E5 /* View */,
+				9E004DC627C45709008693E5 /* ViewModel */,
+				9E004DC527C45702008693E5 /* Router */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		9E004DC527C45702008693E5 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9E004DCF27C45752008693E5 /* FavoritesRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9E004DC627C45709008693E5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9E004DCD27C45747008693E5 /* FavoritesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9E004DC727C45711008693E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9E004DC927C4573C008693E5 /* FavoritesViewController.swift */,
+				9E004DCA27C4573C008693E5 /* FavoritesViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9E630BC927BF394100D42D86 /* ModelTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +247,7 @@
 				9E70FEF727BD29EC00789EEA /* Info.plist */,
 				9E70FF2827BD2B7800789EEA /* Home */,
 				9E70FF3327BD2C1700789EEA /* Detail */,
+				9E004DC427C456A3008693E5 /* Favorites */,
 				9E70FF2A27BD2BB700789EEA /* Utils */,
 				9E70FF2927BD2B9A00789EEA /* Resources */,
 			);
@@ -499,6 +543,7 @@
 				9E70FEF627BD29EC00789EEA /* LaunchScreen.storyboard in Resources */,
 				9E70FEF327BD29EC00789EEA /* Assets.xcassets in Resources */,
 				9E70FF3A27BD36BE00789EEA /* CharacterDetailViewController.xib in Resources */,
+				9E004DCC27C4573C008693E5 /* FavoritesViewController.xib in Resources */,
 				9E70FF4C27BDB27600789EEA /* CharacterCustomCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,9 +688,12 @@
 				9E70FF4427BD398E00789EEA /* CharacterDetailRouter.swift in Sources */,
 				9E70FEF127BD29E900789EEA /* MarvelApp.xcdatamodeld in Sources */,
 				9E70FF2127BD2B4000789EEA /* CharacterListViewController.swift in Sources */,
+				9E004DCE27C45747008693E5 /* FavoritesViewModel.swift in Sources */,
 				9E70FF5227BDE27B00789EEA /* RequestHandler.swift in Sources */,
 				9E70FEE927BD29E900789EEA /* SceneDelegate.swift in Sources */,
 				9E70FF4127BD397100789EEA /* CharacterListRouter.swift in Sources */,
+				9E004DCB27C4573C008693E5 /* FavoritesViewController.swift in Sources */,
+				9E004DD027C45752008693E5 /* FavoritesRouter.swift in Sources */,
 				9E70FF3227BD2C0C00789EEA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

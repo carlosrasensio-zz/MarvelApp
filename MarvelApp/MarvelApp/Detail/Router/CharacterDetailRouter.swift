@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 protocol CharacterDetailRouterProtocol {
+    var character: Character? { get }
     func createCharacterDetailViewController() -> UIViewController
     func setSourceView(_  sourceView: UIViewController?)
 }

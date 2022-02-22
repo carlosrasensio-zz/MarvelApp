@@ -1,31 +1,37 @@
 //
-//  CharacterListRouter.swift
+//  FavoritesRouter.swift
 //  MarvelApp
 //
-//  Created by crodrigueza on 16/2/22.
+//  Created by crodrigueza on 22/2/22.
 //
 
 import Foundation
-
 import UIKit
 
-protocol CharacterListRouterProtocol {
-    func createCharacterListViewController() -> UIViewController
+protocol FavoritesRouterProtocol {
+    var favorites: [Character] { get }
+    func createFavoritesViewController() -> UIViewController
     func setSourceView(_  sourceView: UIViewController?)
     func navigateToCharacterDetail(_ character: Character)
-    func navigateToFavoritesView()
 }
 
-class CharacterListRouter: CharacterListRouterProtocol {
+class FavoritesRouter: FavoritesRouterProtocol {
     // MARK: - Variables
     private var sourceView: UIViewController?
     var viewController: UIViewController {
-        createCharacterListViewController()
+        createFavoritesViewController()
+    }
+    var favorites: [Character]
+
+    // MARK: - Initializer
+    init(favorites: [Character] = []) {
+        self.favorites = favorites
     }
 
     // MARK: - Configuration functions
-    func createCharacterListViewController() -> UIViewController {
-        let view = CharacterListViewController(nibName: "CharacterListViewController", bundle: Bundle.main)
+    func createFavoritesViewController() -> UIViewController {
+        let view = FavoritesViewController(nibName: "FavoritesViewController", bundle: Bundle.main)
+        view.favorites = favorites
 
         return view
     }
@@ -39,10 +45,5 @@ class CharacterListRouter: CharacterListRouterProtocol {
     func navigateToCharacterDetail(_ character: Character) {
         let characterDetailView = CharacterDetailRouter(character: character).viewController
         sourceView?.navigationController?.pushViewController(characterDetailView, animated: true)
-    }
-
-    func navigateToFavoritesView() {
-        let favoritesView = FavoritesRouter().viewController
-        sourceView?.navigationController?.pushViewController(favoritesView, animated: true)
     }
 }
