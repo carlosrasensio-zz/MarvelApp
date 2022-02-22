@@ -24,28 +24,36 @@ class DataManager: DataManagerProtocol {
         return persistentContainer
     }()
 
-    var moc: NSManagedObjectContext {
+    var context: NSManagedObjectContext {
         persistentContainer.viewContext
     }
 
+    // MARK: - Save, delete and fetch methods
     func saveFavorite(_ favorite: Character) {
-        let marvelCharacter = MarvelCharacter(context: moc)
+        let marvelCharacter = MarvelCharacter(context: context)
         marvelCharacter.setValuesForKeys(["name": favorite.name, "desc": favorite.description, "thumbnailPath": favorite.thumbnail.path, "thumbnailExtension": favorite.thumbnail.imageExtension])
         do {
-            try moc.save()
+            try context.save()
         } catch let error {
             print("\n[!] ERROR: \(error.localizedDescription)")
         }
     }
 
     func deleteFavorite(_ favorite: Character) {
-
+        let marvelCharacter = MarvelCharacter(context: context)
+        marvelCharacter.setValuesForKeys(["name": favorite.name, "desc": favorite.description, "thumbnailPath": favorite.thumbnail.path, "thumbnailExtension": favorite.thumbnail.imageExtension])
+        context.delete(marvelCharacter)
+        do {
+            try context.save()
+        } catch let error {
+            print("\n[!] ERROR: \(error.localizedDescription)")
+        }
     }
 
     func getFavorites() -> [Character] {
         do {
             let fetchRequest = NSFetchRequest<MarvelCharacter>(entityName: "MarvelCharacter")
-            let marvelCharacters = try moc.fetch(fetchRequest)
+            let marvelCharacters = try context.fetch(fetchRequest)
             var favorites = [Character]()
             for marvelCharacter in marvelCharacters {
                 let thumbnail = Thumbnail(path: marvelCharacter.thumbnailPath!, imageExtension: marvelCharacter.thumbnailExtension!)

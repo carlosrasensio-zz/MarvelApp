@@ -58,6 +58,10 @@ extension FavoritesViewController {
         self.favorites = viewModel.getFavorites()
         self.reloadTableView()
     }
+
+    func deleteFavorite(_ favorite: Character) {
+        viewModel.deleteFavorite(favorite)
+    }
 }
 
 // MARK: - TableView functions
@@ -84,5 +88,18 @@ extension FavoritesViewController: UITableViewDataSource {
 extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.createCharacterDetailView(favorites[indexPath.row])
+    }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            favorites.remove(at: indexPath.row)
+            self.deleteFavorite(favorites[indexPath.row])
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            self.reloadTableView()
+        }
     }
 }
