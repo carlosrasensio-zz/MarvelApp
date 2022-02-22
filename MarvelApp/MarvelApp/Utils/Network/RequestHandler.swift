@@ -15,13 +15,15 @@ class RequestHandler {
         let privateKey = Constants.NetworkManager.privateApiKey
         let unhashedString = timestamp + privateKey + publicKey
         let hashToken = unhashedString.convertToMD5()
+        let limit = "\(Constants.NetworkManager.limit)"
         let endpoint = Constants.NetworkManager.Endpoints.version + Constants.NetworkManager.Endpoints.type + Constants.NetworkManager.Endpoints.characters
         var components = URLComponents(url: baseURL!.appendingPathComponent(endpoint), resolvingAgainstBaseURL: true)
         let customQueryItems = [URLQueryItem]()
         let commonQueryItems = [
             URLQueryItem(name: "ts", value: timestamp),
             URLQueryItem(name: "hash", value: hashToken),
-            URLQueryItem(name: "apikey", value: publicKey)
+            URLQueryItem(name: "apikey", value: publicKey),
+            URLQueryItem(name: "limit", value: limit)
         ]
         components?.queryItems = commonQueryItems + customQueryItems
         guard let url = components?.url else {
