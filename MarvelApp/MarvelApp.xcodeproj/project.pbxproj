@@ -11,6 +11,7 @@
 		9E004DCC27C4573C008693E5 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E004DCA27C4573C008693E5 /* FavoritesViewController.xib */; };
 		9E004DCE27C45747008693E5 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E004DCD27C45747008693E5 /* FavoritesViewModel.swift */; };
 		9E004DD027C45752008693E5 /* FavoritesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E004DCF27C45752008693E5 /* FavoritesRouter.swift */; };
+		9E004DD627C468CE008693E5 /* MarvelApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E004DD427C468CE008693E5 /* MarvelApp.xcdatamodeld */; };
 		9E630BCB27BF396000D42D86 /* CharacterUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E630BCA27BF396000D42D86 /* CharacterUnitTests.swift */; };
 		9E630BCE27BF39AE00D42D86 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E630BCD27BF39AE00D42D86 /* Data+Extensions.swift */; };
 		9E630BD027BF39C800D42D86 /* DecodableTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E630BCF27BF39C800D42D86 /* DecodableTestFile.swift */; };
@@ -72,6 +73,7 @@
 		9E004DCA27C4573C008693E5 /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
 		9E004DCD27C45747008693E5 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		9E004DCF27C45752008693E5 /* FavoritesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRouter.swift; sourceTree = "<group>"; };
+		9E004DD527C468CE008693E5 /* MarvelApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarvelApp.xcdatamodel; sourceTree = "<group>"; };
 		9E630BCA27BF396000D42D86 /* CharacterUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUnitTests.swift; sourceTree = "<group>"; };
 		9E630BCD27BF39AE00D42D86 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		9E630BCF27BF39C800D42D86 /* DecodableTestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableTestFile.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				9E70FF2F27BD2BE400789EEA /* DataManager.swift */,
+				9E004DD427C468CE008693E5 /* MarvelApp.xcdatamodeld */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				9E70FF3C27BD36CE00789EEA /* CharacterDetailViewModel.swift in Sources */,
 				9E70FEE727BD29E900789EEA /* AppDelegate.swift in Sources */,
 				9E70FF2D27BD2BD500789EEA /* NetworkManager.swift in Sources */,
+				9E004DD627C468CE008693E5 /* MarvelApp.xcdatamodeld in Sources */,
 				9E70FF4427BD398E00789EEA /* CharacterDetailRouter.swift in Sources */,
 				9E70FF2127BD2B4000789EEA /* CharacterListViewController.swift in Sources */,
 				9E004DCE27C45747008693E5 /* FavoritesViewModel.swift in Sources */,
@@ -1046,6 +1050,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9E004DD427C468CE008693E5 /* MarvelApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9E004DD527C468CE008693E5 /* MarvelApp.xcdatamodel */,
+			);
+			currentVersion = 9E004DD527C468CE008693E5 /* MarvelApp.xcdatamodel */;
+			path = MarvelApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9E70FEDB27BD29E900789EEA /* Project object */;
 }
