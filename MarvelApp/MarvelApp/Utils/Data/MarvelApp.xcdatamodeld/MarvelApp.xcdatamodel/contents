@@ -3,9 +3,10 @@
     <entity name="MarvelCharacter" representedClassName="MarvelCharacter" syncable="YES" codeGenerationType="class">
         <attribute name="desc" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
-        <attribute name="thumbnail" attributeType="Transformable" customClassName="Thumbnail"/>
+        <attribute name="thumbnailExtension" attributeType="String"/>
+        <attribute name="thumbnailPath" attributeType="String"/>
     </entity>
     <elements>
-        <element name="MarvelCharacter" positionX="-27" positionY="18" width="128" height="74"/>
+        <element name="MarvelCharacter" positionX="-27" positionY="18" width="128" height="89"/>
     </elements>
 </model>

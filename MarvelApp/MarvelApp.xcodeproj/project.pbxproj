@@ -12,6 +12,7 @@
 		9E004DCE27C45747008693E5 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E004DCD27C45747008693E5 /* FavoritesViewModel.swift */; };
 		9E004DD027C45752008693E5 /* FavoritesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E004DCF27C45752008693E5 /* FavoritesRouter.swift */; };
 		9E004DD627C468CE008693E5 /* MarvelApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E004DD427C468CE008693E5 /* MarvelApp.xcdatamodeld */; };
+		9E004DD827C472C3008693E5 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E004DD727C472C3008693E5 /* UIViewController+Alert.swift */; };
 		9E630BCB27BF396000D42D86 /* CharacterUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E630BCA27BF396000D42D86 /* CharacterUnitTests.swift */; };
 		9E630BCE27BF39AE00D42D86 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E630BCD27BF39AE00D42D86 /* Data+Extensions.swift */; };
 		9E630BD027BF39C800D42D86 /* DecodableTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E630BCF27BF39C800D42D86 /* DecodableTestFile.swift */; };
@@ -74,6 +75,7 @@
 		9E004DCD27C45747008693E5 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		9E004DCF27C45752008693E5 /* FavoritesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRouter.swift; sourceTree = "<group>"; };
 		9E004DD527C468CE008693E5 /* MarvelApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarvelApp.xcdatamodel; sourceTree = "<group>"; };
+		9E004DD727C472C3008693E5 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		9E630BCA27BF396000D42D86 /* CharacterUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUnitTests.swift; sourceTree = "<group>"; };
 		9E630BCD27BF39AE00D42D86 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		9E630BCF27BF39C800D42D86 /* DecodableTestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableTestFile.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 			children = (
 				9E70FF4627BD4A5200789EEA /* String+CommonCrypto.swift */,
 				9E70FF4D27BDD30900789EEA /* UIImageView+URLSession.swift */,
+				9E004DD727C472C3008693E5 /* UIViewController+Alert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 				9E70FF3C27BD36CE00789EEA /* CharacterDetailViewModel.swift in Sources */,
 				9E70FEE727BD29E900789EEA /* AppDelegate.swift in Sources */,
 				9E70FF2D27BD2BD500789EEA /* NetworkManager.swift in Sources */,
+				9E004DD827C472C3008693E5 /* UIViewController+Alert.swift in Sources */,
 				9E004DD627C468CE008693E5 /* MarvelApp.xcdatamodeld in Sources */,
 				9E70FF4427BD398E00789EEA /* CharacterDetailRouter.swift in Sources */,
 				9E70FF2127BD2B4000789EEA /* CharacterListViewController.swift in Sources */,

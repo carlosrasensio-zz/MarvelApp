@@ -62,6 +62,8 @@ class CharacterDetailViewController: UIViewController, CharacterDetailViewContro
     // MARK: - Button action
     @objc func didPressFavoriteButton() {
         saveFavorite()
+        guard let character = character else { return }
+        self.showAlert(title: "Congrats!", message: "The character \(character.name) has been saved successfully.")
     }
 
     private func saveFavorite() {
