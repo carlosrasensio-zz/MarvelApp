@@ -43,7 +43,7 @@ class FavoritesRouter: FavoritesRouterProtocol {
 
     // MARK: - Navigation function
     func navigateToCharacterDetail(_ character: Character) {
-        let characterDetailView = CharacterDetailRouter(character: character).viewController
+        let characterDetailView = CharacterDetailRouter(character: character, isHiddenFavoriteButton: true).viewController
         sourceView?.navigationController?.pushViewController(characterDetailView, animated: true)
     }
 }

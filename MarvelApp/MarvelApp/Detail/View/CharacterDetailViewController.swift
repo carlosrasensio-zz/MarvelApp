@@ -22,6 +22,7 @@ class CharacterDetailViewController: UIViewController, CharacterDetailViewContro
     private var router = CharacterDetailRouter()
     private var viewModel = CharacterDetailViewModel()
     var character: Character?
+    var isHiddenFavoriteButton: Bool?
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -51,6 +52,7 @@ class CharacterDetailViewController: UIViewController, CharacterDetailViewContro
     }
 
     func configureFavoriteButton() {
+        self.favoriteButton.isHidden = isHiddenFavoriteButton ?? false
         self.favoriteButton.backgroundColor = .red
         self.favoriteButton.tintColor = .black
         self.favoriteButton.setTitle("Favorite", for: .normal)
@@ -59,10 +61,11 @@ class CharacterDetailViewController: UIViewController, CharacterDetailViewContro
 
     // MARK: - Button action
     @objc func didPressFavoriteButton() {
-        saveCharacter()
+        saveFavorite()
     }
 
-    private func saveCharacter() {
-
+    private func saveFavorite() {
+        guard let character = character else { return }
+        viewModel.saveFavorite(character)
     }
 }

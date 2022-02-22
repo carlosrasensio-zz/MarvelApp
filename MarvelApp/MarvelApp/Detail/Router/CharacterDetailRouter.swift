@@ -21,16 +21,19 @@ class CharacterDetailRouter: CharacterDetailRouterProtocol {
         createCharacterDetailViewController()
     }
     var character: Character?
+    var isHiddenFavoriteButton: Bool
 
     // MARK: - Initializer
-    init(character: Character? = nil) {
+    init(character: Character? = nil, isHiddenFavoriteButton: Bool = false) {
         self.character = character
+        self.isHiddenFavoriteButton = isHiddenFavoriteButton
     }
 
     // MARK: - Configuration functions
     func createCharacterDetailViewController() -> UIViewController {
         let view = CharacterDetailViewController(nibName: "CharacterDetailViewController", bundle: Bundle.main)
         view.character = character
+        view.isHiddenFavoriteButton = isHiddenFavoriteButton
 
         return view
     }

@@ -17,7 +17,6 @@
 		9E630BD327BF3C0E00D42D86 /* NetworkManagerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E630BD227BF3C0E00D42D86 /* NetworkManagerUnitTests.swift */; };
 		9E70FEE727BD29E900789EEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70FEE627BD29E900789EEA /* AppDelegate.swift */; };
 		9E70FEE927BD29E900789EEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70FEE827BD29E900789EEA /* SceneDelegate.swift */; };
-		9E70FEF127BD29E900789EEA /* MarvelApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E70FEEF27BD29E900789EEA /* MarvelApp.xcdatamodeld */; };
 		9E70FEF327BD29EC00789EEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E70FEF227BD29EC00789EEA /* Assets.xcassets */; };
 		9E70FEF627BD29EC00789EEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E70FEF427BD29EC00789EEA /* LaunchScreen.storyboard */; };
 		9E70FF0B27BD29EC00789EEA /* MarvelAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70FF0A27BD29EC00789EEA /* MarvelAppUITests.swift */; };
@@ -80,7 +79,6 @@
 		9E70FEE327BD29E900789EEA /* MarvelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E70FEE627BD29E900789EEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E70FEE827BD29E900789EEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9E70FEF027BD29E900789EEA /* MarvelApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarvelApp.xcdatamodel; sourceTree = "<group>"; };
 		9E70FEF227BD29EC00789EEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E70FEF527BD29EC00789EEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E70FEF727BD29EC00789EEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -344,7 +342,6 @@
 		9E70FF2E27BD2BD900789EEA /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				9E70FEEF27BD29E900789EEA /* MarvelApp.xcdatamodeld */,
 				9E70FF2F27BD2BE400789EEA /* DataManager.swift */,
 			);
 			path = Data;
@@ -686,7 +683,6 @@
 				9E70FEE727BD29E900789EEA /* AppDelegate.swift in Sources */,
 				9E70FF2D27BD2BD500789EEA /* NetworkManager.swift in Sources */,
 				9E70FF4427BD398E00789EEA /* CharacterDetailRouter.swift in Sources */,
-				9E70FEF127BD29E900789EEA /* MarvelApp.xcdatamodeld in Sources */,
 				9E70FF2127BD2B4000789EEA /* CharacterListViewController.swift in Sources */,
 				9E004DCE27C45747008693E5 /* FavoritesViewModel.swift in Sources */,
 				9E70FF5227BDE27B00789EEA /* RequestHandler.swift in Sources */,
@@ -1050,19 +1046,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		9E70FEEF27BD29E900789EEA /* MarvelApp.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				9E70FEF027BD29E900789EEA /* MarvelApp.xcdatamodel */,
-			);
-			currentVersion = 9E70FEF027BD29E900789EEA /* MarvelApp.xcdatamodel */;
-			path = MarvelApp.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 9E70FEDB27BD29E900789EEA /* Project object */;
 }
