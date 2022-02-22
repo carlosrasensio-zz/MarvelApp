@@ -33,11 +33,11 @@
  
  ## Potential improvements
 - More information in the detail view.
+- Pagination.
 - Add other kind of lists from service, like 'Comics' or 'Creators'.
-- Create our custom lists, selecting our favourite characters.
+- Deleting correctly objects in the CoreData databases.
 - Improve the app UI/UX. Add some animations.
 - Improve the app Unit Tests and implement UI and Integration Tests.
 - Add more languages to the app.
-- Create a struct named Optionals in the Constants file to create a URL for making a more refined search.
 - Handle error in the NetworkManager (Showing alert. Actually, just printing message).
 
