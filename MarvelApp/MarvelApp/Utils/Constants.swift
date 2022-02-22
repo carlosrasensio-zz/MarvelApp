@@ -29,6 +29,7 @@ struct Constants {
             static let timeStamp = "?ts=\(NetworkManager.timeStamp)"
             static let hash = "&hash="
             static let apiKey = "&api_key=\(Constants.NetworkManager.publicApiKey)"
+            static let limit = "&limit="
         }
 
         struct Image {
