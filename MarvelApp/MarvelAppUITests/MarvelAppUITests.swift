@@ -17,6 +17,7 @@ class MarvelAppUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         let favoritesButton = app.buttons["favoritesButton"]
+        favoritesButton.tap()
         // TODO: test Favorites list counts +1
     }
 }

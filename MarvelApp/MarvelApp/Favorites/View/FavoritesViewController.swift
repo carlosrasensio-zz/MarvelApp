@@ -39,10 +39,11 @@ class FavoritesViewController: UIViewController, FavoritesViewControllerProtocol
 
     // MARK: - Table view configuration
     func configureTableView() {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: Constants.CustomCells.characterCellId, bundle: nil), forCellReuseIdentifier: Constants.CustomCells.characterCellId)
+        tableView.accessibilityIdentifier = "favoritesTableView"
     }
 
     private func reloadTableView() {
@@ -72,7 +73,7 @@ extension FavoritesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CustomCells.characterCellId) as! CharacterCustomCell
-        cell.titleLabel.text = favorites[indexPath.row].name
+        cell.titleLabel.text = "\(indexPath.row + 1). " + favorites[indexPath.row].name
         let imagePath = favorites[indexPath.row].thumbnail.path
         let imageExtension = favorites[indexPath.row].thumbnail.imageExtension
         cell.characterImageView.getImageFromURL(imagePath, .landscape_amazing, imageExtension)

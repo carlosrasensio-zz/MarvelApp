@@ -45,6 +45,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4b9-sR-g4l">
                     <rect key="frame" x="173.5" y="786" width="67" height="40"/>
+                    <accessibility key="accessibilityConfiguration" identifier="favoritesButton"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="0RN-9r-K1i"/>
                     </constraints>
