@@ -12,7 +12,7 @@ protocol CharacterListViewModelProtocol {
     var view: CharacterListViewController? { get set }
     var router: CharacterListRouter? { get set }
     func bind(view: CharacterListViewController, router: CharacterListRouter)
-    func getCharacters() -> Observable<[Character]>
+    func getCharacters(offset: Int) -> Observable<[Character]>
     func createCharacterDetailView(_ character: Character)
 }
 
@@ -30,8 +30,8 @@ class CharacterListViewModel: CharacterListViewModelProtocol {
     }
 
     // MARK: - Get data from service
-    func getCharacters() -> Observable<[Character]> {
-        return networkManager.getCharacters()
+    func getCharacters(offset: Int) -> Observable<[Character]> {
+        return networkManager.getCharacters(offset: offset)
     }
 
     // MARK: - Navigation
