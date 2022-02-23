@@ -52,7 +52,6 @@ class CharacterListViewController: UIViewController, CharacterListViewController
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.prefetchDataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: Constants.CustomCells.characterCellId, bundle: nil), forCellReuseIdentifier: Constants.CustomCells.characterCellId)
     }
@@ -128,10 +127,6 @@ extension CharacterListViewController: UITableViewDataSource {
 
         return cell
     }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
-    }
 }
 
 extension CharacterListViewController: UITableViewDelegate {
@@ -142,6 +137,11 @@ extension CharacterListViewController: UITableViewDelegate {
             viewModel.createCharacterDetailView(characters[indexPath.row])
         }
     }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+}
 
 // MARK: - SearchController functions
 extension CharacterListViewController: UISearchControllerDelegate {
