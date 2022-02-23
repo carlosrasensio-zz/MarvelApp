@@ -32,6 +32,7 @@
     - *Tests* - all the files needed to make model and network Unit Testing.
  
  ## Potential improvements
+- Dependency Injection improvement.
 - More information in the detail view.
 - Pagination.
 - Add other kind of lists from service, like 'Comics' or 'Creators'.
