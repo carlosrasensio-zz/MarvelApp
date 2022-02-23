@@ -33,7 +33,7 @@ class CharacterListViewController: UIViewController, CharacterListViewController
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationItem()
+        configureNavigationBar()
         configureSearchBarController()
         configureTableView()
         viewModel.bind(view: self, router: router)
@@ -41,9 +41,8 @@ class CharacterListViewController: UIViewController, CharacterListViewController
     }
 
     // MARK: - NavigationItem configuration
-    private func configureNavigationItem() {
-        navigationController?.navigationBar.barTintColor = UIColor.red
-        self.navigationItem.title = Constants.appName
+    private func configureNavigationBar() {
+        self.navigationItem.title = "Home"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Favs", style: .plain, target: self, action: #selector(showFavorites))
         navigationItem.rightBarButtonItem?.tintColor = .black
     }

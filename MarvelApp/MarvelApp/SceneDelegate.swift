@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let viewController = CharacterListRouter().viewController
         let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.navigationBar.barTintColor = .red
+        configureNavigationBar(navigationController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
@@ -35,3 +35,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
+extension SceneDelegate {
+    func configureNavigationBar(_ navigationController: UINavigationController) {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .red
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+        navigationController.navigationBar.tintColor = .black
+        navigationController.navigationBar.standardAppearance = appearance
+        navigationController.navigationBar.compactAppearance = appearance
+        navigationController.navigationBar.scrollEdgeAppearance = appearance
+    }
+}

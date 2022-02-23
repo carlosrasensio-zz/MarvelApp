@@ -27,15 +27,14 @@ class CharacterDetailViewController: UIViewController, CharacterDetailViewContro
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationItem()
+        configureNavigationBar()
         configureCharacterDetailView()
         viewModel.bind(view: self, router: router)
     }
 
     // MARK: - NavigationItem configuration
-    private func configureNavigationItem() {
-        navigationController?.navigationBar.barTintColor = UIColor.red
-        self.navigationItem.title = Constants.appName
+    private func configureNavigationBar() {
+        self.navigationItem.title = "Detail"
     }
 
     // MARK: View configuration
@@ -56,6 +55,7 @@ class CharacterDetailViewController: UIViewController, CharacterDetailViewContro
         self.favoriteButton.backgroundColor = .red
         self.favoriteButton.tintColor = .black
         self.favoriteButton.setTitle("Favorite", for: .normal)
+        self.favoriteButton.layer.cornerRadius = self.favoriteButton.frame.size.height/2.0
         self.favoriteButton.addTarget(self, action: #selector(didPressFavoriteButton), for: .touchUpInside)
     }
 
