@@ -15,7 +15,7 @@ extension UIViewController {
         alert.view.alpha = 0.5
         alert.view.layer.cornerRadius = 15
         self.present(alert, animated: true)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             alert.dismiss(animated: true)
         }
     }

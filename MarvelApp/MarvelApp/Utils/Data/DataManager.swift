@@ -10,7 +10,7 @@ import CoreData
 
 protocol DataManagerProtocol {
     func saveFavorite(_ favorite: Character)
-    func deleteFavorite(_ favorite: Character)
+    func deleteFavorite(_ name: String)
     func getFavorites() -> [Character]
 }
 
@@ -34,19 +34,22 @@ class DataManager: DataManagerProtocol {
         marvelCharacter.setValuesForKeys(["name": favorite.name, "desc": favorite.description, "thumbnailPath": favorite.thumbnail.path, "thumbnailExtension": favorite.thumbnail.imageExtension])
         do {
             try context.save()
-        } catch let error {
-            print("\n[!] ERROR: \(error.localizedDescription)")
+        } catch {
+            fatalError("[!] ERROR: failed to save favorite --> \(error.localizedDescription)")
         }
     }
 
-    func deleteFavorite(_ favorite: Character) {
-        let marvelCharacter = MarvelCharacter(context: context)
-        marvelCharacter.setValuesForKeys(["name": favorite.name, "desc": favorite.description, "thumbnailPath": favorite.thumbnail.path, "thumbnailExtension": favorite.thumbnail.imageExtension])
-        context.delete(marvelCharacter)
+    func deleteFavorite(_ name: String) {
+        let fetchRequest = NSFetchRequest<MarvelCharacter>(entityName: "MarvelCharacter")
+        fetchRequest.predicate = NSPredicate(format:"name = %@", name)
         do {
+            let favorites = try context.fetch(fetchRequest)
+            if favorites.count > 0 {
+                context.delete(favorites[0])
+            }
             try context.save()
-        } catch let error {
-            print("\n[!] ERROR: \(error.localizedDescription)")
+        } catch {
+            fatalError("[!] ERROR: failed to delete favorite --> \(error.localizedDescription)")
         }
     }
 
@@ -62,10 +65,8 @@ class DataManager: DataManagerProtocol {
             }
 
             return favorites
-        } catch let error {
-            print("\n[!] ERROR: \(error.localizedDescription)")
-
-            return []
+        } catch {
+            fatalError("[!] ERROR: failed to get favorites --> \(error.localizedDescription)")
         }
     }
 }
