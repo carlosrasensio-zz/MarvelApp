@@ -7,8 +7,12 @@
 
 import Foundation
 
-class URLHandler {
-    func getCharactersURL() -> URL {
+protocol URLHandlerProtocol {
+    func getCharactersURL(offset: Int) -> URL
+}
+
+class URLHandler: URLHandlerProtocol {
+    func getCharactersURL(offset: Int) -> URL {
         let baseURL = URL(string: Constants.NetworkManager.URLs.base)
         let timestamp = "\(Constants.NetworkManager.timeStamp)"
         let publicKey = Constants.NetworkManager.publicApiKey
@@ -23,7 +27,8 @@ class URLHandler {
             URLQueryItem(name: "ts", value: timestamp),
             URLQueryItem(name: "hash", value: hashToken),
             URLQueryItem(name: "apikey", value: publicKey),
-            URLQueryItem(name: "limit", value: limit)
+            URLQueryItem(name: "limit", value: limit),
+            URLQueryItem(name: "offset", value: "\(offset)")
         ]
         components?.queryItems = commonQueryItems + customQueryItems
         guard let url = components?.url else {

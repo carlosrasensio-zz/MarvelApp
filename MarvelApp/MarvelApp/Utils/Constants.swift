@@ -27,10 +27,6 @@ struct Constants {
             static let version = "v\(NetworkManager.version)/"
             static let type = "\(NetworkManager.type)/"
             static let characters = "characters"
-            static let timeStamp = "?ts=\(NetworkManager.timeStamp)"
-            static let hash = "&hash="
-            static let apiKey = "&api_key=\(Constants.NetworkManager.publicApiKey)"
-            static let limit = "&limit=\(Constants.NetworkManager.limit)"
         }
 
         struct Image {

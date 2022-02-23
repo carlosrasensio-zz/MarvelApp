@@ -22,7 +22,7 @@ class NetworkManagerUnitTests: XCTestCase {
 
     func testNetworkManagerResponseIsNotNil() {
         networkManager = NetworkManager()
-        let response = networkManager.getCharacters()
+        let response = networkManager.getCharacters(offset: 50)
         XCTAssertNotNil(response)
     }
 }
