@@ -8,7 +8,7 @@
 - Swift 5.0
 
 ## Objective
-- This is a simple project capable to show a Marvel characters list and their details using MVVM architecture, reactive programming and unit testing. The app uses the Marvel API (https://developers.marvel.com/docs).
+- This is a simple project capable to show a Marvel characters list, their details and a favorites list using MVVM architecture, Core Data, reactive programming and unit testing. The app uses the Marvel API (https://developers.marvel.com/docs).
  
 ## Installation
 - Run the `pod install` command
@@ -26,7 +26,7 @@
     
     - *Router* - creates and instances the view through the SceneDelegate.
     - *NetworkManager* - responsible for making API calls.
-    - *RequestHandler* - responsible for creating service URL.
+    - *URLHandler* - responsible for creating service URL.
     
     - *Constants* - app useful data. In this case, especially in order to generate the URL.
     - *Tests* - all the files needed to make model and network Unit Testing.
@@ -35,7 +35,6 @@
 - More information in the detail view.
 - Pagination.
 - Add other kind of lists from service, like 'Comics' or 'Creators'.
-- Deleting correctly objects in the CoreData databases.
 - Improve the app UI/UX. Add some animations.
 - Improve the app Unit Tests and implement UI and Integration Tests.
 - Add more languages to the app.

@@ -59,8 +59,8 @@ extension FavoritesViewController {
         self.reloadTableView()
     }
 
-    func deleteFavorite(_ favorite: Character) {
-        viewModel.deleteFavorite(favorite)
+    func deleteFavorite(_ name: String) {
+        viewModel.deleteFavorite(name)
     }
 }
 
@@ -90,16 +90,14 @@ extension FavoritesViewController: UITableViewDelegate {
         viewModel.createCharacterDetailView(favorites[indexPath.row])
     }
 
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            favorites.remove(at: indexPath.row)
-            self.deleteFavorite(favorites[indexPath.row])
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .destructive, title: "Delete") { action, _, _  in
+            self.deleteFavorite(self.favorites[indexPath.row].name)
+            self.favorites.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
-            self.reloadTableView()
+            self.getFavorites()
         }
+
+        return UISwipeActionsConfiguration(actions: [action])
     }
 }

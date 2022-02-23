@@ -1,5 +1,5 @@
 //
-//  RequestHandler.swift
+//  URLHandler.swift
 //  MarvelApp
 //
 //  Created by crodrigueza on 17/2/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RequestHandler {
+class URLHandler {
     func getCharactersURL() -> URL {
         let baseURL = URL(string: Constants.NetworkManager.URLs.base)
         let timestamp = "\(Constants.NetworkManager.timeStamp)"

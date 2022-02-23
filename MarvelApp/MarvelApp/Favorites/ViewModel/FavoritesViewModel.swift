@@ -12,7 +12,7 @@ protocol FavoritesViewModelProtocol {
     var router: FavoritesRouter? { get }
     func bind(view: FavoritesViewController, router: FavoritesRouter)
     func getFavorites() -> [Character]
-    func deleteFavorite(_ favorite: Character)
+    func deleteFavorite(_ name: String)
 }
 
 class FavoritesViewModel: FavoritesViewModelProtocol {
@@ -33,8 +33,8 @@ class FavoritesViewModel: FavoritesViewModelProtocol {
         return dataManager.getFavorites()
     }
 
-    func deleteFavorite(_ favorite: Character) {
-        dataManager.deleteFavorite(favorite)
+    func deleteFavorite(_ name: String) {
+        dataManager.deleteFavorite(name)
     }
 
     // MARK: - Navigation

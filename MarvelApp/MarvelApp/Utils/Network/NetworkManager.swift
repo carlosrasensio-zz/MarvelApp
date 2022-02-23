@@ -15,8 +15,8 @@ protocol NetworkManagerProtocol {
 class NetworkManager: NetworkManagerProtocol {
     func getCharacters() -> Observable<[Character]>  {
         return Observable.create { observer -> Disposable in
-            let requestHandler = RequestHandler()
-            let url = requestHandler.getCharactersURL()
+            let urlHandler = URLHandler()
+            let url = urlHandler.getCharactersURL()
             let session = URLSession.shared
             let task = session.dataTask(with: url) { (data, response, error) in
                 guard let data = data, error == nil, let response = response as? HTTPURLResponse else { return }
