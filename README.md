@@ -34,7 +34,6 @@
  ## Potential improvements
 - Dependency Injection improvement.
 - More information in the detail view.
-- Pagination.
 - Add other kind of lists from service, like 'Comics' or 'Creators'.
 - Improve the app UI/UX. Add some animations.
 - Improve the app Unit Tests and implement UI and Integration Tests.
