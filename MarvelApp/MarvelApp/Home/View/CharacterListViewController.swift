@@ -22,13 +22,22 @@ class CharacterListViewController: UIViewController, CharacterListViewController
     // MARK: - Variables
     private var router = CharacterListRouter()
     private var viewModel = CharacterListViewModel()
-    private var characters = [Character]()
-    private var filteredCharacters = [Character]()
     private var disposeBag = DisposeBag()
-
+    private let pageLimit = Constants.NetworkManager.limit
+    private var filteredCharacters = [Character]()
+    private var characters = [Character]() {
+        didSet {
+                self.reloadTableView()
+        }
+    }
     lazy var searchController: UISearchController = ({
         createSearchBarController()
     })()
+
+    enum TableSection: Int {
+        case charactersList
+        case loader
+    }
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -59,6 +68,13 @@ class CharacterListViewController: UIViewController, CharacterListViewController
         DispatchQueue.main.async {
             self.setActivityIndicator(false)
             self.tableView.reloadData()
+        }
+    }
+
+    private func hideBottomLoader() {
+        DispatchQueue.main.async {
+            let lastListIndexPath = IndexPath(row: self.characters.count - 1, section: TableSection.charactersList.rawValue)
+            self.tableView.scrollToRow(at: lastListIndexPath, at: .bottom, animated: true)
         }
     }
 
@@ -97,48 +113,6 @@ extension CharacterListViewController {
 private extension CharacterListViewController {
     @objc func showFavorites() {
         viewModel.createFavoritesView()
-    }
-}
-
-// MARK: - TableView functions
-extension CharacterListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.isActive && searchController.searchBar.text != "" {
-            return filteredCharacters.count
-        } else {
-            return characters.count
-        }
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CustomCells.characterCellId) as! CharacterCustomCell
-        if searchController.isActive && searchController.searchBar.text != "" {
-            cell.titleLabel.text = "\(indexPath.row + 1). " + filteredCharacters[indexPath.row].name
-            let imagePath = filteredCharacters[indexPath.row].thumbnail.path
-            let imageExtension = filteredCharacters[indexPath.row].thumbnail.imageExtension
-            cell.characterImageView.getImageFromURL(imagePath, .landscape_amazing, imageExtension)
-        } else {
-            cell.titleLabel.text = "\(indexPath.row + 1). " + characters[indexPath.row].name
-            let imagePath = characters[indexPath.row].thumbnail.path
-            let imageExtension = characters[indexPath.row].thumbnail.imageExtension
-            cell.characterImageView.getImageFromURL(imagePath, .landscape_amazing, imageExtension)
-        }
-
-        return cell
-    }
-}
-
-extension CharacterListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if searchController.isActive && searchController.searchBar.text != "" {
-            viewModel.createCharacterDetailView(filteredCharacters[indexPath.row])
-        } else {
-            viewModel.createCharacterDetailView(characters[indexPath.row])
-        }
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
     }
 }
 
@@ -181,5 +155,72 @@ extension CharacterListViewController: UISearchControllerDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchController.isActive = false
         reloadTableView()
+    }
+}
+
+// MARK: - TableView functions
+extension CharacterListViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let listSection = TableSection(rawValue: section) else { return 0 }
+        switch listSection {
+        case .charactersList:
+            if searchController.isActive && searchController.searchBar.text != "" {
+                return filteredCharacters.count
+            } else {
+                return characters.count
+            }
+        case .loader:
+            return characters.count >= pageLimit ? 1 : 0
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let section = TableSection(rawValue: indexPath.section) else { return UITableViewCell() }
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CustomCells.characterCellId) as! CharacterCustomCell
+        switch section {
+        case .charactersList:
+            if searchController.isActive && searchController.searchBar.text != "" {
+                cell.titleLabel.text = "\(indexPath.row + 1). " + filteredCharacters[indexPath.row].name
+                let imagePath = filteredCharacters[indexPath.row].thumbnail.path
+                let imageExtension = filteredCharacters[indexPath.row].thumbnail.imageExtension
+                cell.characterImageView.getImageFromURL(imagePath, .landscape_amazing, imageExtension)
+            } else {
+                cell.titleLabel.text = "\(indexPath.row + 1). " + characters[indexPath.row].name
+                let imagePath = characters[indexPath.row].thumbnail.path
+                let imageExtension = characters[indexPath.row].thumbnail.imageExtension
+                cell.characterImageView.getImageFromURL(imagePath, .landscape_amazing, imageExtension)
+            }
+        case .loader:
+            cell.titleLabel.text = "Loading..."
+        }
+
+        return cell
+    }
+}
+
+extension CharacterListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            viewModel.createCharacterDetailView(filteredCharacters[indexPath.row])
+        } else {
+            viewModel.createCharacterDetailView(characters[indexPath.row])
+        }
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let section = TableSection(rawValue: indexPath.section) else { return }
+        guard !characters.isEmpty else { return }
+        if section == .loader {
+            getCharacters(offset: characters.count)
+            hideBottomLoader()
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
 }

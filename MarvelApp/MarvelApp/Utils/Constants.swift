@@ -17,7 +17,7 @@ struct Constants {
         static let timeStamp = Date().timeIntervalSince1970
         static let publicApiKey = "bdd7f1b10e8f1b342807f0d5a01f3e03"
         static let privateApiKey = ""   // TODO: Insert private api key
-        static let limit = 100
+        static let limit = 50
 
         struct URLs {
             static let base = "https://gateway.marvel.com/"
