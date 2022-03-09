@@ -39,4 +39,6 @@
 - Improve the app Unit Tests and implement UI and Integration Tests.
 - Add more languages to the app.
 - Handle error in the NetworkManager (Showing alert. Actually, just printing message).
-
+- Remove unnecessary references to View, Router, etc. in modules.
+- Check references cycles loops with the modules View, Router, etc.
+- Review prefixes in variables and functions.
