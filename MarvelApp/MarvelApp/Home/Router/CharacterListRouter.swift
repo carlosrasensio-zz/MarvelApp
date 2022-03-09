@@ -16,7 +16,7 @@ protocol CharacterListRouterProtocol {
     func navigateToFavoritesView()
 }
 
-class CharacterListRouter: CharacterListRouterProtocol {
+final class CharacterListRouter: CharacterListRouterProtocol {
     // MARK: - Variables
     private var sourceView: UIViewController?
     var viewController: UIViewController {

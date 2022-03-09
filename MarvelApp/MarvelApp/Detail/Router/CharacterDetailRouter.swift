@@ -14,7 +14,7 @@ protocol CharacterDetailRouterProtocol {
     func setSourceView(_  sourceView: UIViewController?)
 }
 
-class CharacterDetailRouter: CharacterDetailRouterProtocol {
+final class CharacterDetailRouter: CharacterDetailRouterProtocol {
     // MARK: - Variables
     private var sourceView: UIViewController?
     var viewController: UIViewController {

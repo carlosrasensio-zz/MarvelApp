@@ -12,7 +12,7 @@ protocol FavoritesViewControllerProtocol {
     func getFavorites()
 }
 
-class FavoritesViewController: UIViewController, FavoritesViewControllerProtocol {
+final class FavoritesViewController: UIViewController, FavoritesViewControllerProtocol {
     // MARK: - Outlet
     @IBOutlet weak var tableView: UITableView!
 

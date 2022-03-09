@@ -15,9 +15,9 @@ protocol FavoritesViewModelProtocol {
     func deleteFavorite(_ name: String)
 }
 
-class FavoritesViewModel: FavoritesViewModelProtocol {
+final class FavoritesViewModel: FavoritesViewModelProtocol {
     // MARK: - Variables
-    var view: FavoritesViewController?
+    weak var view: FavoritesViewController?
     var router: FavoritesRouter?
     private var dataManager = DataManager()
 

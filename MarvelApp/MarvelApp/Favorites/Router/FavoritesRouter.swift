@@ -15,7 +15,7 @@ protocol FavoritesRouterProtocol {
     func navigateToCharacterDetail(_ character: Character)
 }
 
-class FavoritesRouter: FavoritesRouterProtocol {
+final class FavoritesRouter: FavoritesRouterProtocol {
     // MARK: - Variables
     private var sourceView: UIViewController?
     var viewController: UIViewController {
