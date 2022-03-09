@@ -9,16 +9,16 @@ import Foundation
 import RxSwift
 
 protocol CharacterListViewModelProtocol {
-    var view: CharacterListViewController? { get set }
-    var router: CharacterListRouter? { get set }
+    var view: CharacterListViewController? { get }
+    var router: CharacterListRouter? { get }
     func bind(view: CharacterListViewController, router: CharacterListRouter)
     func getCharacters(offset: Int) -> Observable<[Character]>
     func createCharacterDetailView(_ character: Character)
 }
 
-class CharacterListViewModel: CharacterListViewModelProtocol {
+final class CharacterListViewModel: CharacterListViewModelProtocol {
     // MARK: - Variables
-    var view: CharacterListViewController?
+    weak var view: CharacterListViewController?
     var router: CharacterListRouter?
     private var networkManager = NetworkManager()
 

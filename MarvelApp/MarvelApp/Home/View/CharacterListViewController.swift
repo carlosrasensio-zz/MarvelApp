@@ -14,7 +14,7 @@ protocol CharacterListViewControllerProtocol {
     func getCharacters(offset: Int)
 }
 
-class CharacterListViewController: UIViewController, CharacterListViewControllerProtocol {
+final class CharacterListViewController: UIViewController, CharacterListViewControllerProtocol {
     // MARK: - Outlets
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
