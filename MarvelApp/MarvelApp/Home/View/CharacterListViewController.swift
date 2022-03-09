@@ -174,7 +174,11 @@ extension CharacterListViewController: UITableViewDataSource {
                 return characters.count
             }
         case .loader:
-            return characters.count >= pageLimit ? 1 : 0
+            if searchController.isActive && searchController.searchBar.text != "" {
+                return filteredCharacters.count >= pageLimit ? 1 : 0
+            } else {
+                return characters.count >= pageLimit ? 1 : 0
+            }
         }
     }
 
