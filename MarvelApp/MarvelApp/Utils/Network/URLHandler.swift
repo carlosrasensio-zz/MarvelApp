@@ -22,7 +22,6 @@ class URLHandler: URLHandlerProtocol {
         let limit = "\(Constants.NetworkManager.limit)"
         let endpoint = Constants.NetworkManager.Endpoints.version + Constants.NetworkManager.Endpoints.type + Constants.NetworkManager.Endpoints.characters
         var components = URLComponents(url: baseURL!.appendingPathComponent(endpoint), resolvingAgainstBaseURL: true)
-        let customQueryItems = [URLQueryItem]()
         let commonQueryItems = [
             URLQueryItem(name: "ts", value: timestamp),
             URLQueryItem(name: "hash", value: hashToken),
@@ -30,7 +29,7 @@ class URLHandler: URLHandlerProtocol {
             URLQueryItem(name: "limit", value: limit),
             URLQueryItem(name: "offset", value: "\(offset)")
         ]
-        components?.queryItems = commonQueryItems + customQueryItems
+        components?.queryItems = commonQueryItems
         guard let url = components?.url else {
             return URL(string: "https://gateway.marvel.com/v1/public/characters?ts=\(timestamp)&hash=\(hashToken)&apikey=\(publicKey)")!
         }
