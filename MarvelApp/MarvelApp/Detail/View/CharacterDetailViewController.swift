@@ -11,7 +11,7 @@ protocol CharacterDetailViewControllerProtocol {
     func configureCharacterDetailView()
 }
 
-class CharacterDetailViewController: UIViewController, CharacterDetailViewControllerProtocol {
+final class CharacterDetailViewController: UIViewController, CharacterDetailViewControllerProtocol {
     // MARK: - Outlets
     @IBOutlet weak var characterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!

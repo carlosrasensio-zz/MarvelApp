@@ -9,15 +9,15 @@ import Foundation
 import RxSwift
 
 protocol CharacterDetailViewModelProtocol {
-    var view: CharacterDetailViewController? { get set }
-    var router: CharacterDetailRouter? { get set }
+    var view: CharacterDetailViewController? { get }
+    var router: CharacterDetailRouter? { get }
     func bind(view: CharacterDetailViewController, router: CharacterDetailRouter)
     func saveFavorite(_ favorite: Character)
 }
 
-class CharacterDetailViewModel: CharacterDetailViewModelProtocol {
+final class CharacterDetailViewModel: CharacterDetailViewModelProtocol {
     // MARK: - Variables
-    var view: CharacterDetailViewController?
+    weak var view: CharacterDetailViewController?
     var router: CharacterDetailRouter?
     private var dataManager = DataManager()
 
